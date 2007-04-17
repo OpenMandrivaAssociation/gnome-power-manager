@@ -1,5 +1,5 @@
 %define	name	gnome-power-manager
-%define version	2.18.1
+%define version	2.18.2
 %define	release	%mkrel 1
 
 Name:		%name
@@ -13,8 +13,6 @@ Source:		%{name}-%{version}.tar.bz2
 Patch0:		gnome-power-manager-2.17.4-powerpolicy.patch
 Patch1:		gnome-power-manager-2.17.92-tray-simplify.patch
 Patch2:		gnome-power-manager-2.17.92-tray-kde.patch
-# (fc) 2.18.1-1mdv sync DPMS policy setting at startup for backlight
-Patch3:		gnome-power-manager-2.18.1-dpmspolicy.patch
 # (fc) 2.18.1-1mdv use gstreamer 0.10 for sound event
 Patch4:		gnome-power-manager-2.18.1-gstreamer010.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
@@ -57,7 +55,6 @@ change preferences.
 %patch0 -p1 -b .powerpolicy
 %patch1 -p0 -b .tray
 %patch2 -p0 -b .traykde
-%patch3 -p1 -b .dpmspolicy
 %patch4 -p1 -b .gstreamer010
 
 %build
