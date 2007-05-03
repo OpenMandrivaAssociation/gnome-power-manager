@@ -11,7 +11,6 @@ Group:		Graphical desktop/GNOME
 URL:		http://www.gnome.org/projects/gnome-power-manager/
 Source:		%{name}-%{version}.tar.bz2
 Patch0:		gnome-power-manager-2.17.4-powerpolicy.patch
-Patch1:		gnome-power-manager-2.17.92-tray-simplify.patch
 Patch2:		gnome-power-manager-2.17.92-tray-kde.patch
 # (fc) 2.18.1-1mdv use gstreamer 0.10 for sound event
 Patch4:		gnome-power-manager-2.18.1-gstreamer010.patch
@@ -53,7 +52,6 @@ change preferences.
 %prep
 %setup -q
 %patch0 -p1 -b .powerpolicy
-%patch1 -p0 -b .tray
 %patch2 -p0 -b .traykde
 %patch4 -p1 -b .gstreamer010
 
