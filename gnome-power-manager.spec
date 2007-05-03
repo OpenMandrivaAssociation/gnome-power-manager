@@ -111,7 +111,6 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/*/apps/gpm-*
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_libdir}/bonobo/servers/*.server
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/*
 %{_sysconfdir}/gconf/schemas/*.schemas
 
 
