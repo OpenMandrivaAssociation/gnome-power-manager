@@ -102,7 +102,7 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog COPYING INSTALL NEWS README
 %{_bindir}/*
 %{_datadir}/applications/*
-%{_datadir}/dbus-1/*
+%{_datadir}/dbus-1/services/*
 %{_datadir}/gnome-power-manager
 %{_datadir}/gnome/help/gnome-power-manager
 %{_datadir}/gnome/autostart/gnome-power-manager.desktop
