@@ -34,6 +34,7 @@ BuildRequires:  libtool
 BuildRequires:	ImageMagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
+BuildRequires:	libgstreamer-devel
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
 Requires:	hal >= 0.5.6
