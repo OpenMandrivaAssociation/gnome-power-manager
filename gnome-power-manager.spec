@@ -14,6 +14,7 @@ Patch0:		gnome-power-manager-2.17.4-powerpolicy.patch
 Patch2:		gnome-power-manager-2.17.92-tray-kde.patch
 # (fc) 2.18.1-1mdv use gstreamer 0.10 for sound event
 Patch4:		gnome-power-manager-2.18.1-gstreamer010.patch
+Patch5:		gnome-power-manager-popt-i18n.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -54,6 +55,7 @@ change preferences.
 %patch0 -p1 -b .powerpolicy
 %patch2 -p0 -b .traykde
 %patch4 -p1 -b .gstreamer010
+%patch5 -p0 -b .popt
 
 %build
 %configure2_5x \
@@ -77,6 +79,8 @@ desktop-file-install --vendor="" \
 	--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/gnome-power-preferences.desktop
 
 %find_lang %name
+ 
+mv %{buildroot}%{_docdir}/*/spec/dbus-interface.html .
 
 %clean
 rm -rf %{buildroot}
@@ -99,7 +103,7 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING INSTALL NEWS README
+%doc AUTHORS ChangeLog COPYING INSTALL NEWS README dbus-interface.html
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_datadir}/dbus-1/services/*
@@ -112,5 +116,4 @@ rm -rf %{buildroot}
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_libdir}/bonobo/servers/*.server
 %{_sysconfdir}/gconf/schemas/*.schemas
-
 
