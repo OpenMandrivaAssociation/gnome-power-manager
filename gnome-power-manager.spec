@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.19.3
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%name
 Version:	%version
@@ -15,6 +15,8 @@ Patch2:		gnome-power-manager-2.17.92-tray-kde.patch
 # (fc) 2.18.1-1mdv use gstreamer 0.10 for sound event
 Patch4:		gnome-power-manager-2.18.1-gstreamer010.patch
 Patch5:		gnome-power-manager-popt-i18n.patch
+# patch from svn that should fix #444240
+Patch6:		gnome-power-manager-2291.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -57,6 +59,7 @@ change preferences.
 %patch2 -p0 -b .traykde
 %patch4 -p1 -b .gstreamer010
 %patch5 -p0 -b .popt
+%patch6 -p0 -b .2291
 
 %build
 %configure2_5x \
