@@ -59,7 +59,7 @@ change preferences.
 %patch2 -p0 -b .traykde
 %patch4 -p1 -b .gstreamer010
 %patch5 -p0 -b .popt
-%patch6 -p0 -b .2291
+%patch6 -p1 -b .2291
 
 %build
 %configure2_5x \
