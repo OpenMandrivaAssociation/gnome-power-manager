@@ -51,7 +51,7 @@ change preferences.
 
 %prep
 %setup -q
-%patch0 -p1 -b .powerpolicy
+%patch0 -p0 -b .powerpolicy
 %patch2 -p0 -b .traykde
 %patch5 -p0 -b .popt
 
