@@ -2,8 +2,6 @@
 %define version	2.19.5
 %define	release	%mkrel 1
 
-%define major	%(echo %version | cut -d . -f 1,2)
-
 Name:		%name
 Version:	%version
 Release:	%release
@@ -11,7 +9,7 @@ Summary:	GNOME Power Manager
 License:	GPL
 Group:		Graphical desktop/GNOME
 URL:		http://www.gnome.org/projects/gnome-power-manager/
-Source:		http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{major}/%{name}-%{version}.tar.bz2
+Source:		http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
 Patch0:		gnome-power-manager-2.17.4-powerpolicy.patch
 Patch2:		gnome-power-manager-2.17.92-tray-kde.patch
 Patch5:		gnome-power-manager-popt-i18n.patch
