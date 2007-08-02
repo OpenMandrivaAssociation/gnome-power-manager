@@ -10,7 +10,7 @@ License:	GPL
 Group:		Graphical desktop/GNOME
 URL:		http://www.gnome.org/projects/gnome-power-manager/
 Source:		http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
-Patch0:		gnome-power-manager-2.17.4-powerpolicy.patch
+Patch0:		gnome-power-manager-powerpolicy.patch
 Patch2:		gnome-power-manager-2.17.92-tray-kde.patch
 Patch5:		gnome-power-manager-popt-i18n.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
