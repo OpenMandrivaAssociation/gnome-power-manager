@@ -109,7 +109,7 @@ rm -rf %{buildroot}
 %{_datadir}/gnome/help/gnome-power-manager
 %{_datadir}/gnome/autostart/gnome-power-manager.desktop
 %{_datadir}/omf/gnome-power-manager
-%{_datadir}/man/man1/*
+%{_mandir}/man1/*
 %{_datadir}/icons/hicolor/*/apps/gpm-*
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_libdir}/bonobo/servers/*.server
