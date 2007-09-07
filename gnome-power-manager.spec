@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.19.6
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%name
 Version:	%version
@@ -72,8 +72,9 @@ export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 rm -f %{buildroot}%{_datadir}/icons/hicolor/icon-theme.cache
 
 desktop-file-install --vendor="" \
-	--add-category="X-MandrivaLinux-System-Configuration-GNOME" \
 	--add-category="DesktopSettings" \
+	--add-category="GTK" \
+	--add-category="GNOME" \
 	--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/gnome-power-preferences.desktop
 
 %find_lang %name
