@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
-%define version	2.19.6
-%define	release	%mkrel 2
+%define version	2.19.92
+%define	release	%mkrel 1
 
 Name:		%name
 Version:	%version
@@ -12,7 +12,6 @@ URL:		http://www.gnome.org/projects/gnome-power-manager/
 Source:		http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
 Patch0:		gnome-power-manager-powerpolicy.patch
 Patch2:		gnome-power-manager-2.17.92-tray-kde.patch
-Patch5:		gnome-power-manager-popt-i18n.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -53,7 +52,6 @@ change preferences.
 %setup -q
 %patch0 -p0 -b .powerpolicy
 %patch2 -p0 -b .traykde
-%patch5 -p0 -b .popt
 
 %build
 %configure2_5x \
@@ -111,7 +109,7 @@ rm -rf %{buildroot}
 %{_datadir}/gnome/autostart/gnome-power-manager.desktop
 %{_datadir}/omf/gnome-power-manager
 %{_mandir}/man1/*
-%{_datadir}/icons/hicolor/*/apps/gpm-*
+%{_datadir}/icons/hicolor/*/apps/gnome-*
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_libdir}/bonobo/servers/*.server
 %{_sysconfdir}/gconf/schemas/*.schemas
