@@ -33,7 +33,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
 %if %mdkversion >= 200810
-BuildRequires:  libpolkit-devel
+BuildRequires:  polkit-devel
 %endif
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
