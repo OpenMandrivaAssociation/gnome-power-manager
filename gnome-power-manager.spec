@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.20.1
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%name
 Version:	%version
@@ -32,6 +32,9 @@ BuildRequires:	ImageMagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
+%if %mdkversion >= 200810
+BuildRequires:  libpolkit-devel
+%endif
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
 Requires:	hal >= 0.5.6
@@ -41,6 +44,9 @@ Requires(post):	GConf2
 Requires(post): scrollkeeper
 Requires(preun):  GConf2
 Requires(postun): scrollkeeper
+%if %mdkversion >= 200810
+Requires:  policykit-gnome
+%endif
 
 %description
 GNOME Power Manager uses the information and facilities provided by HAL 
@@ -59,7 +65,11 @@ change preferences.
 	--with-doc-dir=%{buildroot}%{_datadir}/doc \
 	--with-dbus-sys=%{buildroot}/etc/dbus-1/system.d \
 	--with-dbus-services=%{buildroot}%{_datadir}/dbus-1/services \
+%if %mdkversion <= 200800
 	--disable-policykit
+%else
+	--enable-policykit
+%endif
 make
 
 %install
