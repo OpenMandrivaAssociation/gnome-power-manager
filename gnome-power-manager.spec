@@ -1,6 +1,8 @@
 %define	name	gnome-power-manager
 %define version	2.20.1
-%define	release	%mkrel 2
+%define	release	%mkrel 3
+
+%define enable_polkit 0
 
 Name:		%name
 Version:	%version
@@ -32,7 +34,7 @@ BuildRequires:	ImageMagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
-%if %mdkversion >= 200810
+%if %enable_polkit
 BuildRequires:  polkit-devel
 %endif
 Requires:	gnome-mime-data
@@ -44,7 +46,7 @@ Requires(post):	GConf2
 Requires(post): scrollkeeper
 Requires(preun):  GConf2
 Requires(postun): scrollkeeper
-%if %mdkversion >= 200810
+%if %enable_polkit
 Requires:  policykit-gnome
 %endif
 
@@ -65,10 +67,10 @@ change preferences.
 	--with-doc-dir=%{buildroot}%{_datadir}/doc \
 	--with-dbus-sys=%{buildroot}/etc/dbus-1/system.d \
 	--with-dbus-services=%{buildroot}%{_datadir}/dbus-1/services \
-%if %mdkversion <= 200800
-	--disable-policykit
-%else
+%if %enable_polkit
 	--enable-policykit
+%else
+	--disable-policykit
 %endif
 make
 
