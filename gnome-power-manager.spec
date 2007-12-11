@@ -112,7 +112,7 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING INSTALL NEWS README dbus-interface.html
+%doc AUTHORS COPYING INSTALL NEWS README dbus-interface.html
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_datadir}/dbus-1/services/*
