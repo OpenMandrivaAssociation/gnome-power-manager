@@ -14,7 +14,6 @@ URL:		http://www.gnome.org/projects/gnome-power-manager/
 Source:		http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
 Patch0:		gnome-power-manager-powerpolicy.patch
 Patch2:		gnome-power-manager-2.17.92-tray-kde.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
 BuildRequires:	libglade2.0-devel >= 2.5.0
