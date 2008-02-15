@@ -1,5 +1,5 @@
 %define	name	gnome-power-manager
-%define version	2.21.1
+%define version	2.21.92
 %define	release	%mkrel 1
 
 %define enable_polkit 0
@@ -124,5 +124,7 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/*/apps/gnome-*
 %{_datadir}/gnome-2.0/ui/*.xml
 %{_libdir}/bonobo/servers/*.server
+%_libexecdir/gnome-brightness-applet
+%_libexecdir/gnome-inhibit-applet
 %{_sysconfdir}/gconf/schemas/*.schemas
 
