@@ -1,5 +1,5 @@
 %define	name	gnome-power-manager
-%define version	2.21.92
+%define version	2.22.0
 %define	release	%mkrel 1
 
 %define enable_polkit 0
