@@ -35,6 +35,7 @@ BuildRequires:	ImageMagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
+BuildRequires:  intltool
 %if %enable_polkit
 BuildRequires:  polkit-devel
 %endif
