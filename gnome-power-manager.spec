@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
-%define version	2.22.0
-%define	release	%mkrel 2
+%define version	2.22.1
+%define	release	%mkrel 1
 
 %define enable_polkit 0
 
@@ -13,8 +13,6 @@ Group:		Graphical desktop/GNOME
 URL:		http://www.gnome.org/projects/gnome-power-manager/
 Source:		http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
 Patch0:		gnome-power-manager-powerpolicy.patch
-# (fc) 2.22.0-2mdv various fixes from SVN
-Patch2:		gnome-power-manager-2.22.0-svnfixes.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -61,10 +59,6 @@ change preferences.
 %prep
 %setup -q
 %patch0 -p0 -b .powerpolicy
-%patch2 -p1 -b .svnfixes
-
-#needed by patch2
-autoreconf
 
 %build
 %configure2_5x \
