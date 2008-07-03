@@ -2,8 +2,6 @@
 %define version	2.23.3
 %define	release	%mkrel 1
 
-%define enable_polkit 0
-
 Name:		%name
 Version:	%version
 Release:	%release
@@ -32,9 +30,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
 BuildRequires:  intltool
-%if %enable_polkit
 BuildRequires:  polkit-gnome-devel
-%endif
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
 Requires:	hal >= 0.5.6
@@ -44,9 +40,7 @@ Requires(post):	GConf2
 Requires(post): scrollkeeper
 Requires(preun):  GConf2
 Requires(postun): scrollkeeper
-%if %enable_polkit
 Requires:  policykit-gnome
-%endif
 
 %description
 GNOME Power Manager uses the information and facilities provided by HAL 
@@ -62,12 +56,7 @@ change preferences.
 	--enable-doxygen-docs=no \
 	--with-doc-dir=%{buildroot}%{_datadir}/doc \
 	--with-dbus-sys=%{buildroot}/etc/dbus-1/system.d \
-	--with-dbus-services=%{buildroot}%{_datadir}/dbus-1/services \
-%if %enable_polkit
-	--enable-policykit
-%else
-	--disable-policykit
-%endif
+	--with-dbus-services=%{buildroot}%{_datadir}/dbus-1/services
 make
 
 %install
