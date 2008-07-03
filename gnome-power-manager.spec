@@ -20,7 +20,6 @@ BuildRequires:	libwnck-devel >= 2.10.0
 BuildRequires:	hal-devel >= 0.5.6
 BuildRequires:	dbus-devel >= 0.50
 BuildRequires:	autoconf2.5
-BuildRequires:	perl(XML::Parser)
 BuildRequires:	gnome-doc-utils >= 0.3.2
 BuildRequires:	libnotify-devel
 BuildRequires:	docbook-utils
@@ -34,7 +33,7 @@ BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
 BuildRequires:  intltool
 %if %enable_polkit
-BuildRequires:  polkit-devel
+BuildRequires:  polkit-gnome-devel
 %endif
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
