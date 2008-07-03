@@ -30,7 +30,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
 BuildRequires:  intltool
-BuildRequires:  polkit-gnome-devel
+BuildRequires:  policykit-gnome-devel
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
 Requires:	hal >= 0.5.6
