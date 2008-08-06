@@ -1,5 +1,5 @@
 %define	name	gnome-power-manager
-%define version	2.23.3
+%define version	2.23.6
 %define	release	%mkrel 1
 
 Name:		%name
