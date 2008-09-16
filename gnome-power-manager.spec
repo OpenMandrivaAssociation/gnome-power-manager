@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.23.91
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%name
 Version:	%version
@@ -9,7 +9,9 @@ Summary:	GNOME Power Manager
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://www.gnome.org/projects/gnome-power-manager/
-Source:		http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
+# (fc) 2.23.91-2mdv lock screensaver when running suspend / hibernate (needed since we don't auto-lock screensaver by default)
+Patch0:		gnome-power-manager-2.23.91-lock.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -50,6 +52,7 @@ change preferences.
 
 %prep
 %setup -q
+%patch0 -p1 -b .lock
 
 %build
 %configure2_5x \
