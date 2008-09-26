@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.24.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%name
 Version:	%version
@@ -12,6 +12,8 @@ URL:		http://www.gnome.org/projects/gnome-power-manager/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
 # (fc) 2.23.91-2mdv lock screensaver when running suspend / hibernate (needed since we don't auto-lock screensaver by default)
 Patch0:		gnome-power-manager-2.23.91-lock.patch
+# (pt) Claim org.freedesktop.Policy.Power so that other scripts and apps know that some power management tool is running
+Patch1:		gnome-power-manager-powerpolicy.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -53,6 +55,7 @@ change preferences.
 %prep
 %setup -q
 %patch0 -p1 -b .lock
+%patch1 -p0 -b .powerpolicy
 
 %build
 %configure2_5x \
