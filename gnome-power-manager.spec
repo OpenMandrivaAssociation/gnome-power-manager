@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.24.0
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 
 Name:		%name
 Version:	%version
@@ -14,6 +14,9 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{ve
 Patch0:		gnome-power-manager-2.23.91-lock.patch
 # (pt) Claim org.freedesktop.Policy.Power so that other scripts and apps know that some power management tool is running
 Patch1:		gnome-power-manager-powerpolicy.patch
+# (pt) Use gnome-session-save to get the shutdown dialog, else we get the logout one
+# We should use dbus directly but the dialog needs to ask us canHibernate and canSuspend
+Patch2:		gnome-power-manager-shutdown.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -56,6 +59,7 @@ change preferences.
 %setup -q
 %patch0 -p1 -b .lock
 %patch1 -p0 -b .powerpolicy
+%patch2 -p0
 
 %build
 %configure2_5x \
