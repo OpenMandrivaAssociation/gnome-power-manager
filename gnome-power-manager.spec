@@ -32,7 +32,7 @@ BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	xmlto
 BuildRequires:	libxslt-proc
 BuildRequires:  libtool
-BuildRequires:	ImageMagick
+BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
