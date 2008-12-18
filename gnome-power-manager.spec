@@ -1,5 +1,5 @@
 %define	name	gnome-power-manager
-%define version	2.24.2
+%define version	2.25.1
 %define	release	%mkrel 1
 
 Name:		%name
@@ -58,14 +58,12 @@ change preferences.
 %prep
 %setup -q
 %patch0 -p1 -b .lock
-%patch1 -p0 -b .powerpolicy
-%patch2 -p0 -b .logout
+%patch1 -p1 -b .powerpolicy
+#%patch2 -p0 -b .logout
 
 %build
 %configure2_5x \
-	--enable-doxygen-docs=no \
 	--with-doc-dir=%{buildroot}%{_datadir}/doc \
-	--with-dbus-sys=%{buildroot}/etc/dbus-1/system.d \
 	--with-dbus-services=%{buildroot}%{_datadir}/dbus-1/services
 make
 
