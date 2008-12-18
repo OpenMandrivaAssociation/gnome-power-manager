@@ -24,6 +24,7 @@ BuildRequires:	libglade2.0-devel >= 2.5.0
 BuildRequires:	libwnck-devel >= 2.10.0
 BuildRequires:	hal-devel >= 0.5.6
 BuildRequires:	dbus-devel >= 0.50
+BuildRequires:	libcanberra-devel
 BuildRequires:	autoconf2.5
 BuildRequires:	gnome-doc-utils >= 0.3.2
 BuildRequires:	libnotify-devel
