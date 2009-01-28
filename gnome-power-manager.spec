@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.25.2
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 
 Name:		%name
 Version:	%version
@@ -42,13 +42,13 @@ BuildRequires:  policykit-gnome-devel
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
 Requires:	hal >= 0.5.6
-Requires:	pm-utils
 Requires(pre):	GConf2
 Requires(post):	GConf2
 Requires(post): scrollkeeper
 Requires(preun):  GConf2
 Requires(postun): scrollkeeper
-Requires:  policykit-gnome
+Requires:	policykit-gnome
+Requires:	devicekit-power
 
 %description
 GNOME Power Manager uses the information and facilities provided by HAL 
@@ -90,23 +90,8 @@ rm -rf %{buildroot}
 
 %define schemas %name
 
-%if %mdkversion < 200900
-%post
-%post_install_gconf_schemas %{schemas}
-%update_scrollkeeper
-%update_icon_cache hicolor
-%update_menus
-%endif
-
 %preun
 %preun_uninstall_gconf_schemas %{schemas}
-
-%if %mdkversion < 200900
-%postun
-%clean_scrollkeeper
-%clean_icon_cache hicolor
-%clean_menus
-%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
