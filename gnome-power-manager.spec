@@ -40,6 +40,7 @@ BuildRequires:	libgstreamer-devel
 BuildRequires:  intltool
 BuildRequires:  policykit-gnome-devel
 BuildRequires:  libdevkit-gobject-devel
+BuildRequires:	unique-devel >= 0.9.4
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
 Requires:	hal >= 0.5.6
