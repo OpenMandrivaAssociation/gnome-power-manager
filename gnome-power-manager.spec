@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
-%define version	2.25.2
-%define	release	%mkrel 3
+%define version	2.25.3
+%define	release	%mkrel 1
 
 Name:		%name
 Version:	%version
@@ -39,6 +39,7 @@ BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
 BuildRequires:  intltool
 BuildRequires:  policykit-gnome-devel
+BuildRequires:  libdevkit-gobject-devel
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
 Requires:	hal >= 0.5.6
