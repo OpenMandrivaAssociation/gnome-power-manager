@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
-%define version	2.25.3
-%define	release	%mkrel 2
+%define version	2.25.91
+%define	release	%mkrel 1
 
 Name:		%name
 Version:	%version
@@ -17,8 +17,6 @@ Patch1:		gnome-power-manager-powerpolicy.patch
 # (pt) Use gnome-session-save to get the shutdown dialog, else we get the logout one
 # We should use dbus directly but the dialog needs to ask us canHibernate and canSuspend
 Patch2:		gnome-power-manager-shutdown.patch
-# (pt) https://qa.mandriva.com/show_bug.cgi?id=47556
-Patch3:		gpm-2.25.3-idletime-hilarity.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -65,7 +63,6 @@ change preferences.
 %patch0 -p1 -b .lock
 %patch1 -p1 -b .powerpolicy
 #%patch2 -p0 -b .logout
-%patch3 -p1 -b .x
 
 %build
 %configure2_5x \
@@ -101,12 +98,12 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS COPYING INSTALL NEWS README dbus-interface.html
+%{_sysconfdir}/xdg/autostart/gnome-power-manager.desktop
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_datadir}/dbus-1/services/*
 %{_datadir}/gnome-power-manager
 %{_datadir}/gnome/help/gnome-power-manager
-%{_datadir}/gnome/autostart/gnome-power-manager.desktop
 %{_datadir}/omf/gnome-power-manager
 %{_mandir}/man1/*
 %{_datadir}/icons/hicolor/*/apps/gnome-*
