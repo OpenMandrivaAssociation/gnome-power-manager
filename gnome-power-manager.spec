@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.26.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%name
 Version:	%version
@@ -65,7 +65,8 @@ change preferences.
 #%patch2 -p0 -b .logout
 
 %build
-%configure2_5x \
+%configure2_5x --enable-legacy-buttons \
+	--enable-policykit \
 	--with-doc-dir=%{buildroot}%{_datadir}/doc \
 	--with-dbus-services=%{buildroot}%{_datadir}/dbus-1/services
 make
