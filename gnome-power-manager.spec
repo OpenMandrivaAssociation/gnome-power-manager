@@ -1,5 +1,5 @@
 %define	name	gnome-power-manager
-%define version	2.26.2
+%define version	2.27.1
 %define	release	%mkrel 1
 
 Name:		%name
@@ -40,6 +40,7 @@ BuildRequires:	libgstreamer-devel
 BuildRequires:  intltool
 BuildRequires:  policykit-gnome-devel
 BuildRequires:  libdevkit-gobject-devel
+BuildRequires:  devicekit-power-devel
 BuildRequires:	unique-devel >= 0.9.4
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
