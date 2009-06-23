@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.27.1
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%name
 Version:	%version
@@ -17,6 +17,7 @@ Patch1:		gnome-power-manager-powerpolicy.patch
 # (pt) Use gnome-session-save to get the shutdown dialog, else we get the logout one
 # We should use dbus directly but the dialog needs to ask us canHibernate and canSuspend
 Patch2:		gnome-power-manager-shutdown.patch
+Patch3:		gnome-power-manager-2.27.1-dont-run-in-xfce.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -64,6 +65,7 @@ change preferences.
 %patch0 -p1 -b .lock
 %patch1 -p1 -b .powerpolicy
 #%patch2 -p0 -b .logout
+%patch3 -p1
 
 %build
 %configure2_5x --enable-legacy-buttons \
