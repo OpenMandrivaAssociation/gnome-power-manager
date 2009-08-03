@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
-%define version	2.27.2
-%define	release	%mkrel 3
+%define version	2.27.5
+%define	release	%mkrel 1
 
 Name:		%name
 Version:	%version
@@ -12,14 +12,10 @@ URL:		http://www.gnome.org/projects/gnome-power-manager/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
 # (fc) 2.23.91-2mdv lock screensaver when running suspend / hibernate (needed since we don't auto-lock screensaver by default)
 Patch0:		gnome-power-manager-2.23.91-lock.patch
-# (pt) Claim org.freedesktop.Policy.Power so that other scripts and apps know that some power management tool is running
-Patch1:		gnome-power-manager-powerpolicy.patch
 # (pt) Use gnome-session-save to get the shutdown dialog, else we get the logout one
 # We should use dbus directly but the dialog needs to ask us canHibernate and canSuspend
 Patch2:		gnome-power-manager-shutdown.patch
 Patch3:		gnome-power-manager-2.27.1-dont-run-in-xfce.patch
-# (cg) Upstream fix for http://bugzilla.gnome.org/show_bug.cgi?id=588259 & https://qa.mandriva.com/show_bug.cgi?id=52298
-Patch4:		gnome-power-manager-2.27.2-64bit-full-charge-signalling.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	gtk2-devel >= 2.6.0
 BuildRequires:	libgnomeui2-devel >= 2.10.0
@@ -41,8 +37,6 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
 BuildRequires:  intltool
-BuildRequires:  policykit-gnome-devel
-BuildRequires:  libdevkit-gobject-devel
 BuildRequires:  devicekit-power-devel
 BuildRequires:	unique-devel >= 0.9.4
 Requires:	gnome-mime-data
@@ -53,7 +47,6 @@ Requires(post):	GConf2
 Requires(post): scrollkeeper
 Requires(preun):  GConf2
 Requires(postun): scrollkeeper
-Requires:	policykit-gnome
 Requires:	devicekit-power
 
 %description
@@ -65,14 +58,11 @@ change preferences.
 %prep
 %setup -q
 %patch0 -p1 -b .lock
-%patch1 -p1 -b .powerpolicy
 #%patch2 -p0 -b .logout
 %patch3 -p1
-%patch4 -p1
 
 %build
-%configure2_5x --enable-legacy-buttons \
-	--enable-policykit \
+%configure2_5x 
 	--with-doc-dir=%{buildroot}%{_datadir}/doc \
 	--with-dbus-services=%{buildroot}%{_datadir}/dbus-1/services
 make
@@ -92,8 +82,6 @@ desktop-file-install --vendor="" \
 
 %find_lang %name
  
-mv %{buildroot}%{_docdir}/*/spec/dbus-interface.html .
-
 %clean
 rm -rf %{buildroot}
 
@@ -104,7 +92,7 @@ rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc AUTHORS COPYING INSTALL NEWS README dbus-interface.html
+%doc AUTHORS COPYING INSTALL NEWS README 
 %{_sysconfdir}/xdg/autostart/gnome-power-manager.desktop
 %{_bindir}/*
 %{_datadir}/applications/*
