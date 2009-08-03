@@ -62,7 +62,7 @@ change preferences.
 %patch3 -p1
 
 %build
-%configure2_5x 
+%configure2_5x \
 	--with-doc-dir=%{buildroot}%{_datadir}/doc \
 	--with-dbus-services=%{buildroot}%{_datadir}/dbus-1/services
 make
