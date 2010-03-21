@@ -37,7 +37,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
 BuildRequires:	libgstreamer-devel
 BuildRequires:  intltool
-BuildRequires:  devicekit-power-devel
+BuildRequires:  UPower-devel
 BuildRequires:	unique-devel >= 0.9.4
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
