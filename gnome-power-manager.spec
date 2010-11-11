@@ -19,7 +19,7 @@ BuildRequires:	glib2-devel >= 2.25
 BuildRequires:	gtk+2-devel
 BuildRequires:	libwnck-devel >= 2.10.0
 BuildRequires:	dbus-devel >= 0.50
-BuildRequires:	libcanberra-devel
+BuildRequires:	libcanberra-gtk-devel
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libgnome-window-settings-devel
 BuildRequires:	autoconf2.5
