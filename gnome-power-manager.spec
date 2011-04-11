@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.32.0
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Name:		%name
 Version:	%version
@@ -14,15 +14,18 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{ve
 # We should use dbus directly but the dialog needs to ask us canHibernate and canSuspend
 Patch2:		gnome-power-manager-shutdown.patch
 Patch3:		gnome-power-manager-2.27.1-dont-run-in-xfce.patch
+Patch4:		gnome-power-manager-2.32.0-bug644143.patch
+Patch5:		gnome-power-manager-2.32.0-libnotify0.7.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	glib2-devel >= 2.25
 BuildRequires:	gtk+2-devel
-BuildRequires:	libwnck-devel >= 2.10.0
-BuildRequires:	dbus-devel >= 0.50
+BuildRequires:	dbus-glib-devel >= 0.50
 BuildRequires:	libcanberra-gtk-devel
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libgnome-window-settings-devel
-BuildRequires:	autoconf2.5
+BuildRequires:	libbonobo-activation-devel
+BuildRequires:	libGConf2-devel GConf2
+BuildRequires:	autoconf
 BuildRequires:	gnome-doc-utils >= 0.3.2
 BuildRequires:	libnotify-devel
 BuildRequires:	docbook-utils
@@ -33,17 +36,12 @@ BuildRequires:  libtool
 BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	libpanel-applet-devel
-BuildRequires:	libgstreamer-devel
 BuildRequires:  intltool
 BuildRequires:  UPower-devel
 BuildRequires:	unique-devel >= 0.9.4
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
-Requires(pre):	GConf2
-Requires(post):	GConf2
-Requires(post): scrollkeeper
 Requires(preun):  GConf2
-Requires(postun): scrollkeeper
 Requires:	devicekit-power
 
 %description
@@ -54,21 +52,21 @@ change preferences.
 
 %prep
 %setup -q
-#%patch2 -p0 -b .logout
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
-%configure2_5x \
-	--with-doc-dir=%{buildroot}%{_datadir}/doc \
-	--with-dbus-services=%{buildroot}%{_datadir}/dbus-1/services
-make
+%configure2_5x --disable-schemas-install --disable-scrollkeeper \
+	--with-doc-dir=%{_datadir}/doc \
+	--with-dbus-services=%{_datadir}/dbus-1/services
+%make
 
 %install
 rm -rf %{buildroot}
-export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
-%makeinstall _ENABLE_SK=false
+%makeinstall_std
 
-rm -f %{buildroot}%{_datadir}/icons/hicolor/icon-theme.cache
+#rm -f %{buildroot}%{_datadir}/icons/hicolor/icon-theme.cache
 
 desktop-file-install --vendor="" \
 	--add-category="DesktopSettings" \
@@ -81,10 +79,8 @@ desktop-file-install --vendor="" \
 %clean
 rm -rf %{buildroot}
 
-%define schemas %name
-
 %preun
-%preun_uninstall_gconf_schemas %{schemas}
+%preun_uninstall_gconf_schemas %{name}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -105,4 +101,3 @@ rm -rf %{buildroot}
 %_libexecdir/gnome-brightness-applet
 %_libexecdir/gnome-inhibit-applet
 %{_sysconfdir}/gconf/schemas/*.schemas
-
