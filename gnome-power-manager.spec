@@ -24,6 +24,7 @@ BuildRequires:	libcanberra-gtk-devel
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libgnome-window-settings-devel
 BuildRequires:	libbonobo-activation-devel
+BuildRequires:	libwnck-devel
 BuildRequires:	libGConf2-devel GConf2
 BuildRequires:	autoconf
 BuildRequires:	gnome-doc-utils >= 0.3.2
