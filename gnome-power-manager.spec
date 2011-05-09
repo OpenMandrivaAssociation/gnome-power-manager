@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.32.0
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 
 Name:		%name
 Version:	%version
@@ -43,7 +43,7 @@ BuildRequires:	unique-devel >= 0.9.4
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
 Requires(preun):  GConf2
-Requires:	devicekit-power
+Requires:	upower
 
 %description
 GNOME Power Manager uses the information and facilities provided by Upower
