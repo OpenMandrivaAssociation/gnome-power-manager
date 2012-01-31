@@ -36,7 +36,7 @@ BuildRequires:	libxslt-proc
 BuildRequires:	libtool
 BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
-BuildRequires:	devel(libpanel-applet-2)
+BuildRequires:	pkgconfig(libpanelapplet-2.0)
 BuildRequires:	intltool
 BuildRequires:	UPower-devel
 BuildRequires:	unique-devel >= 0.9.4
