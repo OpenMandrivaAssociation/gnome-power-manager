@@ -1,6 +1,6 @@
 %define	name	gnome-power-manager
 %define version	2.32.0
-%define	release	%mkrel 3
+%define	release	4
 
 Name:		%name
 Version:	%version
@@ -12,18 +12,18 @@ URL:		http://www.gnome.org/projects/gnome-power-manager/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{name}-%{version}.tar.bz2
 # (pt) Use gnome-session-save to get the shutdown dialog, else we get the logout one
 # We should use dbus directly but the dialog needs to ask us canHibernate and canSuspend
-Patch2:		gnome-power-manager-shutdown.patch
+#Patch2:		gnome-power-manager-shutdown.patch
 Patch3:		gnome-power-manager-2.27.1-dont-run-in-xfce.patch
 Patch4:		gnome-power-manager-2.32.0-bug644143.patch
 Patch5:		gnome-power-manager-2.32.0-libnotify0.7.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
+Patch6:		gnome-power-manager.fix-duplicate-battery.patch
 BuildRequires:	glib2-devel >= 2.25
 BuildRequires:	gtk+2-devel
 BuildRequires:	dbus-glib-devel >= 0.50
 BuildRequires:	libcanberra-gtk-devel
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libgnome-window-settings-devel
-BuildRequires:	libbonobo-activation-devel
+BuildRequires:	libbonobo-devel
 BuildRequires:	libwnck-devel
 BuildRequires:	libGConf2-devel GConf2
 BuildRequires:	autoconf
@@ -33,12 +33,12 @@ BuildRequires:	docbook-utils
 BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	xmlto
 BuildRequires:	libxslt-proc
-BuildRequires:  libtool
+BuildRequires:	libtool
 BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
-BuildRequires:	libpanel-applet-devel
-BuildRequires:  intltool
-BuildRequires:  UPower-devel
+BuildRequires:	devel(libpanel-applet-2)
+BuildRequires:	intltool
+BuildRequires:	UPower-devel
 BuildRequires:	unique-devel >= 0.9.4
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
@@ -56,6 +56,7 @@ change preferences.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1 -b .fix-duplicate-battery
 
 %build
 %configure2_5x --disable-schemas-install --disable-scrollkeeper \
@@ -67,7 +68,7 @@ change preferences.
 rm -rf %{buildroot}
 %makeinstall_std
 
-#rm -f %{buildroot}%{_datadir}/icons/hicolor/icon-theme.cache
+#rm -f % {buildroot}% {_datadir}/icons/hicolor/icon-theme.cache
 
 desktop-file-install --vendor="" \
 	--add-category="DesktopSettings" \
