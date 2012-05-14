@@ -1,5 +1,5 @@
 Name:		gnome-power-manager
-Version:	3.2.1
+Version:	3.4.0
 Release:	1
 Summary:	GNOME Power Manager
 License:	GPLv2+
