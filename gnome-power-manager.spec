@@ -2,8 +2,8 @@
 
 Summary:	GNOME Power Manager
 Name:		gnome-power-manager
-Version:	3.6.0
-Release:	7
+Version:	3.14.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/projects/gnome-power-manager/
@@ -21,7 +21,6 @@ BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(upower-glib)
 Requires:	gnome-mime-data
 Requires:	gnome-icon-theme
-Requires(preun):	GConf2
 Requires:	upower
 
 %description
@@ -34,8 +33,7 @@ change preferences.
 %setup -q
 
 %build
-%configure2_5x \
-	--disable-static
+%configure
 
 %make
 
@@ -46,9 +44,10 @@ change preferences.
 %files -f %{name}.lang
 %doc AUTHORS COPYING INSTALL NEWS README 
 %{_bindir}/*
+%{_datadir}/appdata/gnome-power-statistics.appdata.xml
 %{_datadir}/applications/gnome-power-statistics.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.power-manager.gschema.xml
-%{_datadir}/gnome-power-manager
 %{_iconsdir}/hicolor/*/apps/gnome-*
+%{_iconsdir}/HighContrast/*/apps/gnome-*
 %{_mandir}/man1/*
 
