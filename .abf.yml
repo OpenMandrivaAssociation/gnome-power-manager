@@ -1,4 +1,5 @@
 removed_sources:
+  gnome-power-manager-3.14.1.tar.xz: 08273f03e686121c6fff1c472ba55893442d3f0d
   gnome-power-manager-3.6.0.tar.xz: f7bf768cfefc3ac0a0d75ac74fa5f8e7f9025bce
 sources:
-  gnome-power-manager-3.14.1.tar.xz: 08273f03e686121c6fff1c472ba55893442d3f0d
+  gnome-power-manager-3.16.1.tar.xz: 450d4d40c3ee504346622aeba096bfd71f2df12b
