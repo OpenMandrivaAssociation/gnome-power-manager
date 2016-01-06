@@ -2,7 +2,7 @@
 
 Summary:	GNOME Power Manager
 Name:		gnome-power-manager
-Version:	3.16.1
+Version:	3.18.0
 Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -25,8 +25,8 @@ Requires:	upower
 
 %description
 GNOME Power Manager uses the information and facilities provided by Upower
-displaying icons and handling user callbacks in an interactive GNOME session. 
-GNOME Power Preferences allows authorised users to set policy and 
+displaying icons and handling user callbacks in an interactive GNOME session.
+GNOME Power Preferences allows authorised users to set policy and
 change preferences.
 
 %prep
@@ -40,7 +40,7 @@ change preferences.
 %install
 %makeinstall_std
 %find_lang %{name}
- 
+
 %files -f %{name}.lang
 %doc AUTHORS COPYING NEWS README
 %{_bindir}/*
