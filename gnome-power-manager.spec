@@ -51,10 +51,8 @@ desktop-file-install \
 %files -f %{name}.lang
 %doc AUTHORS
 %{_bindir}/*
-#{_datadir}/appdata/gnome-power-statistics.appdata.xml
+%{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.power-manager.gschema.xml
-#{_iconsdir}/hicolor/*/apps/gnome-*
 %{_datadir}/icons/hicolor/*/apps/*.*
 %{_mandir}/man1/*
-
