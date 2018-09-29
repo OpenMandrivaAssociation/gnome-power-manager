@@ -2,8 +2,8 @@
 
 Summary:	GNOME Power Manager
 Name:		gnome-power-manager
-Version:	3.18.0
-Release:	2
+Version:	3.30.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org/projects/gnome-power-manager/
@@ -19,8 +19,10 @@ BuildRequires:	pkgconfig(gnome-keyring-1)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(upower-glib)
+BuildRequires:	meson
+
 Requires:	gnome-mime-data
-Requires:	gnome-icon-theme
+Requires:	adwaita-icon-theme
 Requires:	upower
 
 %description
@@ -33,12 +35,17 @@ change preferences.
 %setup -q
 
 %build
-%configure
-
-%make
+%meson
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
+
+#fix desktop file (missing ; as trailing char)
+desktop-file-install \
+	--dir %{buildroot}%{_datadir}/applications \
+		%{buildroot}%{_datadir}/applications/*.desktop
+    
 %find_lang %{name}
 
 %files -f %{name}.lang
