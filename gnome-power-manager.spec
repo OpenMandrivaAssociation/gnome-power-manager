@@ -49,11 +49,12 @@ desktop-file-install \
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc AUTHORS COPYING NEWS README
+%doc AUTHORS
 %{_bindir}/*
-%{_datadir}/appdata/gnome-power-statistics.appdata.xml
-%{_datadir}/applications/gnome-power-statistics.desktop
+#{_datadir}/appdata/gnome-power-statistics.appdata.xml
+%{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.power-manager.gschema.xml
-%{_iconsdir}/hicolor/*/apps/gnome-*
+#{_iconsdir}/hicolor/*/apps/gnome-*
+%{_datadir}/icons/hicolor/*/apps/*.*
 %{_mandir}/man1/*
 
