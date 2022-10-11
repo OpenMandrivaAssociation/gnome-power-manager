@@ -2,7 +2,7 @@
 
 Summary:	GNOME Power Manager
 Name:		gnome-power-manager
-Version:	3.32.0
+Version:	43.0
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
