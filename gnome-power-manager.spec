@@ -3,11 +3,11 @@
 Summary:	GNOME Power Manager
 Name:		gnome-power-manager
 Version:	43.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
-Url:		http://www.gnome.org/projects/gnome-power-manager/
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://www.gnome.org/projects/gnome-power-manager/
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/gnome-power-manager/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	docbook-utils
