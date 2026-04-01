@@ -2,8 +2,8 @@
 
 Summary:	GNOME Power Manager
 Name:		gnome-power-manager
-Version:	43.0
-Release:	7
+Version:	50.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		https://www.gnome.org/projects/gnome-power-manager/
@@ -16,7 +16,7 @@ BuildRequires:	xmlto
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	pkgconfig(gnome-keyring-1)
-BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(upower-glib)
 BuildRequires:	meson
